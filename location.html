@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location & Hours | Señor Valentin Tacos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Señor Valentin Tacos",
+          "telephone": "+1-417-505-8848",
+          "url": "https://www.yourwebsite.com",
+          "sameAs": [
+            "https://www.facebook.com/profile.php?id=61554289633413"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Current stop varies by event",
+            "addressLocality": "Springfield",
+            "addressRegion": "MO",
+            "postalCode": "65802",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 37.2089,
+            "longitude": -93.2923
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Friday", "Saturday"],
+              "opens": "10:00",
+              "closes": "18:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Thursday", "Friday", "Saturday"],
+              "opens": "14:00",
+              "closes": "20:00"
+            }
+          ]
+        }
+    </script>
+</head>
+<body>
+
+<header id="main-nav">
+    <div class="logo">🌮 Señor Valentin</div>
+    <nav role="navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="story.html" class="nav-link">Story</a>
+    </nav>
+    <a href="tel:+14175058848" class="btn btn-primary mobile-cta">Call Us Now (417) 505-8848</a>
+</header>
+
+<main class="container location-page">
+    <section class="location-status location-status--alert">
+        <p class="eyebrow">Location + schedule</p>
+        <h1 id="location-title">Loading current location...</h1>
+        <p id="location-summary">Loading schedule details...</p>
+        <p class="note">If we are closed, the map will switch to the next scheduled public stop.</p>
+    </section>
+
+    <section class="location-grid">
+        <div class="location-panel">
+            <h2>Upcoming stops</h2>
+            <div id="upcoming-stops-list" class="schedule-list"></div>
+        </div>
+
+        <div class="location-panel">
+            <h2>Find us</h2>
+            <div class="map-embed-wrap">
+                <iframe
+                    id="google-map"
+                    title="Map showing the selected food truck location"
+                    src="https://www.google.com/maps?q=Codes+Dispensary+1450+W+Smith+St+Springfield+MO+65807&z=14&output=embed"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <a id="map-link" class="map-link-btn" href="https://www.google.com/maps/search/?api=1&query=Codes+Dispensary+1450+W+Smith+St+Springfield+MO+65807" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+            <p id="map-address" class="note">1450 W. Smith St, Springfield, MO 65807</p>
+        </div>
+    </section>
+
+    <section class="hours-box">
+        <h2>Hours</h2>
+        <ul class="hours-list">
+            <li><span>Monday</span><span>Closed</span></li>
+            <li><span>Tuesday</span><span>Closed</span></li>
+            <li><span>Wednesday</span><span>Closed</span></li>
+            <li><span>Thursday</span><span>2:00 PM – 8:00 PM</span></li>
+            <li><span>Friday</span><span>10:00 AM – 6:00 PM / 2:00 PM – 8:00 PM</span></li>
+            <li><span>Saturday</span><span>10:00 AM – 6:00 PM / 2:00 PM – 8:00 PM</span></li>
+            <li><span>Sunday</span><span>Closed</span></li>
+        </ul>
+        <p class="note">Hours vary with event locations and public appearances. Check the upcoming stop list for the most current schedule.</p>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <p>&copy; 2024 Señor Valentin Tacos. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61554289633413" target="_blank" rel="noopener noreferrer">Facebook</a> | <a href="mailto:ericvalentin1212@gmail.com">Email</a>
+        </div>
+        <p>Proudly built by <a href="https://thomureapiaries.com" target="_blank" rel="noopener noreferrer">S&A Thomure Enterprises LLC</a></p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

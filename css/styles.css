@@ -1,0 +1,722 @@
+/* ======================== 1. GLOBAL VARIABLES & RESET ======================== */
+:root {
+    /* Brand Palette derived from the visuals */
+    --brand-red: #D90429;     /* Deep, energetic red */
+    --brand-yellow: #FFC300;  /* Sunny yellow/Gold accent */
+    --brand-black: #1A1A1A;   /* Deep black for contrast */
+    --brand-white: #FFFFFF;
+    --brand-accent: #E84A59; /* A complementary pinkish red for depth */
+
+    /* Typography Fallbacks (Assume a fun, bold font is imported later) */
+    --font-display: 'Impact', Impact, sans-serif;
+    --font-body: 'Arial', sans-serif;
+
+    /* Spacing Units */
+    --spacing-lg: 3rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+    background-color: #fefae9; /* Creamy background, avoids harsh white */
+    line-height: 1.6;
+}
+
+/* General Utility Classes */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) 0; /* Adds vertical breathing room */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--brand-black);
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* General Button Styling (The "Funnel") */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    margin: 10px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+/* Specific Button Types */
+.btn-primary {
+    background-color: var(--brand-red);
+    color: white !important;
+    border: 2px solid var(--brand-red);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: var(--brand-black);
+    border: 2px dashed #aaa; /* Gives a "handwritten" feel */
+}
+.btn-call-us, .btn-find-location, .btn-view-menu {
+    /* These are the cta-strip buttons */
+    flex-grow: 1; /* Makes them equally wide on desktop */
+    padding: 1rem 1rem;
+    font-size: 1.1rem;
+}
+
+/* ======================== 2. HEADER & NAVIGATION (Sticky) ======================== */
+
+#main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--brand-white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--brand-red);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--brand-black);
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: var(--brand-red);
+}
+
+/* Make the CTA stand out in the header */
+.btn-primary.mobile-cta {
+    margin: left: 20px;
+}
+
+
+/* ======================== 3. HERO SECTION & LOCATION WIDGET (The Biggest Impact) ======================== */
+#hero-location {
+    background: #f5f1ea;
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.location-widget-container {
+    margin-bottom: 30px;
+}
+
+h2#hero-location h2 {
+    font-size: 1.8rem;
+    color: var(--brand-yellow);
+    text-transform: none; /* Override uppercase for a more dynamic look */
+    padding-bottom: 5px;
+}
+
+/* The Critical Status Banner Styling */
+.live-status-block {
+    background-color: #FFD700; /* Gold/Yellow warning color */
+    border: 4px solid var(--brand-red);
+    padding: 15px 20px;
+    margin: 20px auto;
+    max-width: 80%;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--brand-black);
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* High shadow for visibility */
+}
+
+/* CTA Strip Layout (Crucial Responsiveness) */
+.cta-strip {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    justify-content: center;
+}
+
+/* ======================== 4. TEASER SECTION & STORYTELLING ======================== */
+.story-intro {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 60px 0;
+    border-bottom: 3px dashed #eee; /* Adds a divider break */
+}
+
+.text-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+/* Simulates the "Vintage Sign" aesthetic for text blocks */
+.mission-statement {
+    font-style: italic;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #444;
+    border-left: 3px solid var(--brand-red);
+    padding-left: 15px;
+}
+
+.image-placeholder {
+    flex: 1;
+    max-width: 40%;
+    min-height: 250px;
+    background: none;
+    border: 6px solid var(--brand-yellow);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.image-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Menu Grid Styling (Cards) */
+.menu-teasers {
+    padding-bottom: var(--spacing-lg);
+}
+.taco-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive Grid */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: var(--brand-white);
+    border: 3px solid #eee;
+    padding-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Light lift */
+    transition: transform 0.3s;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02); /* Hover pop-up effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #ccc;
+    border-radius: 10px 10px 0 0;
+}
+
+.price {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--brand-red);
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+
+/* Daily Specials Box (Alert Look) */
+.alert-box {
+    background-color: #FFF8DC; /* Very light yellow/cream */
+    border: 3px dashed var(--brand-yellow);
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.hero {
+    background: #f6f3ed;
+    padding: 2rem 1rem 3rem;
+}
+
+.banner-sign-wrap {
+    width: min(100%, 980px);
+    margin: 0 auto 1rem;
+    background: transparent;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.banner-sign {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+    background: linear-gradient(180deg, #eef5ff, #dbe8f3);
+}
+
+.menu-page {
+    padding-top: 2rem;
+    max-width: 1040px;
+}
+
+.menu-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(220px, 0.88fr);
+    gap: 1.5rem;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #f1e7d4;
+    border-radius: 18px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin-bottom: 2rem;
+    box-shadow: none;
+}
+
+.menu-category h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: 1rem;
+    color: var(--brand-red);
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-red);
+    margin-bottom: 0.75rem;
+}
+
+.menu-hero__content h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    color: var(--brand-red);
+    margin-bottom: 1rem;
+}
+
+.menu-hero__copy {
+    max-width: 32rem;
+    font-size: 1.15rem;
+    color: #2d2d2d;
+    margin-bottom: 1.3rem;
+}
+
+.menu-avatar-art {
+    width: min(100%, 420px);
+    margin-left: auto;
+}
+
+.menu-avatar-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
+    max-height: 400px;
+}
+
+.menu-category {
+    margin-top: 2rem;
+}
+
+.price-list.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    align-items: stretch;
+}
+
+.menu-item {
+    background: #fff;
+    border: 2px solid #f0e6d9;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+    width: min(100%, 320px);
+    margin: 0 auto;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+}
+
+.menu-item img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.menu-item__body {
+    padding: 1rem 1rem 1.25rem;
+}
+
+.menu-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+.menu-item p {
+    margin-bottom: 0.7rem;
+    color: #444;
+    font-size: 0.96rem;
+}
+
+.menu-item figcaption {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brand-red);
+}
+
+.story-page {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.story-lead {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.story-lead h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--brand-red);
+    margin-bottom: 1rem;
+}
+
+.story-photo {
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid #f1e7d4;
+    background: #fff;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+}
+
+.story-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+}
+
+.story-card {
+    background: #fff;
+    border: 2px solid #f1e7d4;
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+}
+
+.story-card h2 {
+    margin-bottom: 0.75rem;
+    color: var(--brand-red);
+    font-size: 1.8rem;
+}
+
+.story-card p {
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.story-feature {
+    margin-top: 2rem;
+    background: #fff8e8;
+    border: 2px dashed var(--brand-yellow);
+    border-radius: 18px;
+    padding: 2rem;
+}
+
+.story-feature h2 {
+    margin-bottom: 0.75rem;
+    color: var(--brand-black);
+}
+
+.cta-banner {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding: 2rem 1rem 0;
+}
+
+.cta-banner h2 {
+    margin-bottom: 1rem;
+    color: var(--brand-black);
+}
+
+.location-page {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.location-status {
+    background: #fff;
+    border: 2px solid #f1e7d4;
+    border-radius: 18px;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.location-status--alert {
+    background: #fff8e8;
+    border: 2px dashed var(--brand-yellow);
+}
+
+.location-status h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--brand-red);
+    margin-bottom: 0.75rem;
+}
+
+.location-status p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.location-panel {
+    background: #fff;
+    border: 2px solid #f1e7d4;
+    border-radius: 18px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.location-panel h2 {
+    margin-bottom: 1rem;
+    color: var(--brand-red);
+    font-size: clamp(1.7rem, 2vw, 2.3rem);
+}
+
+.location-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.schedule-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.schedule-item {
+    border: 1px solid #f0e6d9;
+    border-radius: 14px;
+    padding: 1rem 1rem 0.9rem;
+    background: #fffaf5;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.schedule-item:hover,
+.schedule-item:focus-visible {
+    border-color: var(--brand-red);
+    box-shadow: 0 8px 18px rgba(54, 40, 27, 0.08);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.schedule-item.is-selected {
+    border-color: var(--brand-red);
+    background: #fff1f1;
+    box-shadow: 0 10px 18px rgba(182, 29, 41, 0.08);
+}
+
+.schedule-item .day {
+    display: block;
+    font-weight: 700;
+    color: var(--brand-red);
+    margin-bottom: 0.25rem;
+}
+
+.schedule-item strong {
+    color: var(--brand-black);
+}
+
+.map-embed-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 260px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #f0e6d9;
+    background: #f6f2eb;
+    margin-bottom: 1rem;
+}
+
+#google-map {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    display: block;
+}
+
+.map-link-btn {
+    display: inline-block;
+    background: var(--brand-red);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.9rem 1.2rem;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+.map-link-btn:hover {
+    background: var(--brand-accent);
+}
+
+#map-address {
+    margin-top: 0.25rem;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.hours-box {
+    margin-top: 1.5rem;
+    background: #fff;
+    border: 2px solid #f1e7d4;
+    border-radius: 18px;
+    padding: 1.5rem;
+}
+
+.hours-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f2e5d6;
+    color: #333;
+}
+
+.hours-list li:last-child {
+    border-bottom: none;
+}
+
+.note {
+    color: #555;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* ======================== 5. FOOTER & RESPONSIVENESS ======================== */
+footer {
+    background-color: var(--brand-black);
+    color: #ccc;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9rem;
+}
+
+.social-links a {
+    color: var(--brand-yellow);
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+     color: var(--brand-red);
+}
+
+/* MEDIA QUERIES (The Mobile Magic) */
+@media (max-width: 768px) {
+    /* Adjustments for tablets and smaller screens */
+
+    #main-nav {
+        flex-direction: column;
+        padding: 1rem 5%;
+        position: static;
+        text-align: center;
+    }
+    .logo { margin-bottom: 10px; }
+    nav a { margin: 0 10px; font-size: 0.9rem; display: block; }
+
+    .story-intro, .menu-teasers {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-placeholder, .text-content {
+        max-width: 100%;
+        margin-top: 30px;
+    }
+
+    .cta-strip {
+        flex-direction: column;
+        padding: 0 5%;
+    }
+    .btn-call-us, .btn-find-location, .btn-view-menu {
+        width: 100%;
+    }
+
+    .menu-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    .menu-hero__copy {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .menu-avatar-art {
+        width: min(100%, 420px);
+        margin: 0 auto;
+    }
+
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hours-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    padding-bottom: 2rem;
+}
