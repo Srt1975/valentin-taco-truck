@@ -44,6 +44,21 @@ function sanitizeItems(items) {
     .filter((item) => item.name.length > 0);
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function safeImagePath(imagePath) {
+  const trimmed = String(imagePath || '').trim();
+  const isAllowed = /^images\/[a-zA-Z0-9._/-]+$/.test(trimmed) || /^https?:\/\/[^"'<>\\s]+$/.test(trimmed);
+  return isAllowed ? trimmed : 'images/food1.jpg';
+}
+
 function loadItems() {
   try {
     const saved = localStorage.getItem(MENU_STORAGE_KEY);
@@ -72,11 +87,11 @@ function renderLandingMenu(items) {
 
   menuNode.innerHTML = visibleItems.map((item) => `
     <figure class="menu-item">
-      <img src="${item.image}" alt="${item.name}" />
+      <img src="${escapeHtml(safeImagePath(item.image))}" alt="${escapeHtml(item.name)}" />
       <div class="menu-item__body">
-        <h3>${item.name}</h3>
-        <p>${item.description}</p>
-        <figcaption>${item.price}</figcaption>
+        <h3>${escapeHtml(item.name)}</h3>
+        <p>${escapeHtml(item.description)}</p>
+        <figcaption>${escapeHtml(item.price)}</figcaption>
       </div>
     </figure>
   `).join('');
@@ -88,15 +103,15 @@ function editorItemMarkup(item, index) {
       <div class="menu-editor-grid">
         <label>
           Item name
-          <input type="text" class="field-name" value="${item.name}" required>
+          <input type="text" class="field-name" value="${escapeHtml(item.name)}" required>
         </label>
         <label>
           Price
-          <input type="text" class="field-price" value="${item.price}" placeholder="$0.00">
+          <input type="text" class="field-price" value="${escapeHtml(item.price)}" placeholder="$0.00">
         </label>
         <label>
           Image path
-          <input type="text" class="field-image" value="${item.image}" placeholder="images/food1.jpg">
+          <input type="text" class="field-image" value="${escapeHtml(item.image)}" placeholder="images/food1.jpg">
         </label>
         <label class="menu-editor-check">
           <input type="checkbox" class="field-show" ${item.showOnLanding ? 'checked' : ''}>
@@ -105,7 +120,7 @@ function editorItemMarkup(item, index) {
       </div>
       <label>
         Description
-        <textarea class="field-description" rows="2">${item.description}</textarea>
+        <textarea class="field-description" rows="2">${escapeHtml(item.description)}</textarea>
       </label>
       <button type="button" class="menu-item-remove btn btn-secondary">Remove</button>
     </article>
