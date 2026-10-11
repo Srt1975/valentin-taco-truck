@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Señor Valentin Tacos - Let's Taco About It</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- SCHEMA MARKUP FOR SEO (CRITICAL) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Señor Valentin Tacos",
+          "address": { /* Address details here */ },
+          "geo": { "@type": "GeoCoordinates", "latitude": 39.87, "longitude": -90.12 },
+          "openingHoursSpecification": [ /* Detailed hours structure goes here */ ],
+          "telephone": "(417) 505-8848",
+          "url": "https://www.yourwebsite.com"
+        }
+    </script>
+</head>
+
+<body>
+
+<!-- ======================== HEADER COMPONENT (Sticky) ======================== -->
+<header id="main-nav">
+    <div class="logo">🌮 Señor Valentin</div>
+    <nav role="navigation">
+        <a href="#menu-teaser" class="nav-link">Menu</a>
+        <a href="location.html" class="nav-link">Location</a>
+        <a href="story.html" class="nav-link">Story</a>
+    </nav>
+    <!-- Primary CTA Button -->
+    <a href="tel:+14175058848" class="btn btn-primary mobile-cta">Call Us Now (417) 505-8848</a>
+</header>
+
+<!-- ======================== HERO SECTION & LIVE LOCATION WIDGET (Above The Fold) ======================== -->
+<section id="hero-location" class="hero">
+    <div class="banner-sign-wrap">
+        <img class="banner-sign" src="images/v_banner_low_res.jpg" alt="Señor Valentin taco banner" />
+    </div>
+
+    <div class="location-widget-container">
+        <h2>🌮 TODAY'S STATUS:</h2>
+        <div id="dynamic-location-status" class="live-status-block">
+            Loading schedule...
+        </div>
+        <a href="tel:+14175058848" class="btn btn-secondary large">📞 Call Us Right Now</a>
+    </div>
+
+    <div class="cta-strip">
+        <a href="tel:+14175058848" class="btn btn-call-us">📞 CALL US</a>
+        <a href="location.html" class="btn btn-find-location">📍 FIND MAP / HOURS</a>
+        <a href="#menu-teaser" class="btn btn-view-menu">🌮 VIEW MENU</a>
+    </div>
+</section>
+
+<!-- ======================== TEASER SECTION (The Quick Sell) ======================== -->
+<main>
+    <section id="story-hook" class="container content-block story-intro">
+        <div class="text-content">
+            <h1>Let's Taco About It.</h1>
+            <p class="mission-statement">We bring the flavor and community spirit of authentic Mexico to your neighborhood. Fresh, bold, and built for the party.</p>
+            <a href="menu.html" class="btn btn-secondary mt-20">See What's Cooking →</a>
+        </div>
+        <div class="image-placeholder">
+             <img src="images/avatar_square.jpg" alt="Señor Valentin avatar" />
+        </div>
+    </section>
+
+    <!-- Menu Teaser (Three items showcase) -->
+    <section id="menu-teaser" class="container content-block menu-teasers">
+        <h2>🔥 Our Top 3 Must-Try Tacos</h2>
+        <div class="taco-grid">
+            <!-- Taco Item Card 1 -->
+            <article class="card">
+                <h3>Carnitas Classic</h3>
+                <img src="images/food1.jpg" alt="Delicious Carnitas Tacos">
+                <p>Slow-cooked pork perfection.</p>
+                <span class="price">$3.50 / taco</span>
+            </article>
+             <!-- Taco Item Card 2 -->
+            <article class="card">
+                <h3>Spicy Shrimp</h3>
+                <img src="images/food2.jpg" alt="Flavorful Shrimp Tacos">
+                <p>Grilled shrimp with spicy chipotle crema.</p>
+                 <span class="price">$4.00 / taco</span>
+            </article>
+             <!-- Taco Item Card 3 -->
+            <article class="card">
+                <h3>Veggie Delight</h3>
+                <img src="images/food3.jpg" alt="Fresh Vegetarian Tacos">
+                <p>Seasonal vegetables with corn salsa.</p>
+                 <span class="price">$3.00 / taco</span>
+            </article>
+        </div>
+
+        <!-- CRITICAL: Daily Specials Widget -->
+        <div id="daily-specials" class="alert-box mt-5">
+            <h3>🌟 TODAY'S DAILY SPECIAL 🌟</h3>
+            <!-- JS will pull this data from the Google Sheet API -->
+            [DAILY SPECIAL MESSAGE HERE - E.g., $1 Hot Dogs Combo!]
+        </div>
+
+        <div class="text-center mt-40">
+             <a href="menu.html" class="btn btn-primary large">View Full Menu Lineup</a>
+        </div>
+    </section>
+</main>
+
+<!-- ======================== FOOTER (Legal & Links) ======================== -->
+<footer>
+    <div class="container footer-content">
+        <p>&copy; 2024 Señor Valentin Tacos. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61554289633413" target="_blank" rel="noopener noreferrer">Facebook</a> | <a href="mailto:ericvalentin1212@gmail.com">Email</a>
+        </div>
+        <p>Proudly built by <a href="https://thomureapiaries.com" target="_blank" rel="noopener noreferrer">S&A Thomure Enterprises LLC</a></p>
+    </div>
+</footer>
+
+<!-- ======================== JavaScript Section ======================== -->
+<script src="js/main.js"></script>
+<script>
+    // JS FUNCTIONALITY PLAN:
+    // 1. Initialize Location Widget: Call API function to populate #dynamic-location-status.
+    // 2. Sticky Nav: Implement class change for header when scrolled down.
+    // 3. Lazy Loading: Add Intersection Observer for large images (e.g., in the card grid).
+</script>
+
+</body>
+</html>
