@@ -62,9 +62,11 @@ function safeImagePath(imagePath) {
 function loadItems() {
   try {
     const saved = localStorage.getItem(MENU_STORAGE_KEY);
-    if (!saved) return DEFAULT_MENU_ITEMS;
+    if (saved === null) return DEFAULT_MENU_ITEMS;
     const parsed = JSON.parse(saved);
-    const cleaned = sanitizeItems(Array.isArray(parsed) ? parsed : []);
+    if (!Array.isArray(parsed)) return DEFAULT_MENU_ITEMS;
+    const cleaned = sanitizeItems(parsed);
+    if (parsed.length === 0) return cleaned;
     return cleaned.length ? cleaned : DEFAULT_MENU_ITEMS;
   } catch {
     return DEFAULT_MENU_ITEMS;
